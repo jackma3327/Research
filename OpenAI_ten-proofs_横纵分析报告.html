@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+@page {
+    size: A4;
+    margin: 25mm 20mm 20mm 20mm;
+
+    @top-center {
+        content: "OpenAI ten-proofs  |  横纵分析法深度研究报告";
+        font-family: "Droid Sans Fallback", Helvetica, Arial, sans-serif;
+        font-size: 8pt;
+        color: #95a5a6;
+        border-bottom: 0.5pt solid #ecf0f1;
+        padding-bottom: 3mm;
+    }
+
+    @bottom-center {
+        content: "第 " counter(page) " 页";
+        font-family: "Droid Sans Fallback", Helvetica, Arial, sans-serif;
+        font-size: 8pt;
+        color: #95a5a6;
+        border-top: 0.8pt solid #1a5276;
+        padding-top: 2mm;
+    }
+}
+
+@page :first {
+    @top-center { content: none; }
+    @bottom-center { content: none; }
+}
+
+body {
+    font-family: "Droid Sans Fallback", Helvetica, Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.75;
+    color: #2c3e50;
+    text-align: justify;
+}
+
+/* 封面 */
+.cover {
+    page-break-after: always;
+    text-align: center;
+    padding-top: 45%;
+}
+.cover h1 {
+    font-size: 28pt;
+    color: #1a5276;
+    margin-bottom: 8mm;
+    font-weight: bold;
+    letter-spacing: 2pt;
+}
+.cover .subtitle {
+    font-size: 14pt;
+    color: #95a5a6;
+    margin-bottom: 6mm;
+}
+.cover .meta {
+    font-size: 11pt;
+    color: #95a5a6;
+    margin-bottom: 4mm;
+}
+.cover .divider {
+    width: 60%;
+    margin: 8mm auto;
+    border: none;
+    border-top: 1.5pt solid #1a5276;
+}
+
+/* 一级标题 */
+h1 {
+    font-size: 20pt;
+    color: #1a5276;
+    margin-top: 16mm;
+    margin-bottom: 6mm;
+    padding-bottom: 3mm;
+    border-bottom: 2pt solid #1a5276;
+    page-break-before: always;
+    font-weight: bold;
+}
+
+/* 二级标题 */
+h2 {
+    font-size: 14pt;
+    color: #1e8449;
+    margin-top: 10mm;
+    margin-bottom: 5mm;
+    font-weight: bold;
+}
+
+/* 三级标题 */
+h3 {
+    font-size: 12pt;
+    color: #2e86c1;
+    margin-top: 6mm;
+    margin-bottom: 3mm;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 11pt;
+    color: #5b2c6f;
+    margin-top: 5mm;
+    margin-bottom: 2mm;
+    font-weight: bold;
+}
+
+/* 段落 */
+p {
+    margin-top: 1.5mm;
+    margin-bottom: 1.5mm;
+    orphans: 3;
+    widows: 3;
+}
+
+/* 引用块 */
+blockquote {
+    margin: 4mm 0;
+    padding: 4mm 4mm 4mm 10mm;
+    background: #f8f9fa;
+    border-left: 3pt solid #1a5276;
+    color: #5d6d7e;
+    font-size: 10pt;
+}
+blockquote p {
+    margin: 1mm 0;
+}
+
+/* 粗体 */
+strong, b {
+    font-weight: bold;
+    color: #1a252f;
+}
+
+/* 行内代码 */
+code {
+    font-family: "Courier New", Courier, monospace;
+    background: #fdf2e9;
+    color: #c0392b;
+    padding: 0.5mm 1.5mm;
+    border-radius: 2pt;
+    font-size: 9.5pt;
+}
+
+/* 表格 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+}
+thead th {
+    background: #1a5276;
+    color: white;
+    padding: 3mm;
+    text-align: left;
+    font-weight: bold;
+}
+tbody td {
+    padding: 2.5mm 3mm;
+    border-bottom: 0.5pt solid #bdc3c7;
+}
+tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* 分隔线 */
+hr {
+    border: none;
+    border-top: 0.5pt solid #bdc3c7;
+    margin: 4mm 0;
+}
+
+/* 列表 */
+ul, ol {
+    margin: 2mm 0;
+    padding-left: 8mm;
+}
+li {
+    margin-bottom: 1mm;
+}
+
+/* 链接 */
+a {
+    color: #2e86c1;
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+    <div class="cover">
+        <h1 style="page-break-before: avoid; border: none;">OpenAI ten-proofs</h1>
+        <div class="subtitle">横纵分析法深度研究报告</div>
+        <div class='meta'>研究时间：2026年8月4日 | 所属领域：AI for Mathematics / 形式化证明 / 理论计算机科学 | 研究对象类型：开源研究工件与研究方法论</div>
+        <hr class="divider">
+        <div class="meta">作者: 数字生命卡兹克</div>
+    </div>
+    
+
+<blockquote>
+<p>研究时间：2026年8月4日 | 所属领域：AI for Mathematics / 形式化证明 / 理论计算机科学 | 研究对象类型：开源研究工件与研究方法论</p>
+</blockquote>
+<h2>目录</h2>
+<ol>
+<li>一句话定义</li>
+<li>纵向分析：从诞生到当下</li>
+<li>横向分析：竞争图谱</li>
+<li>横纵交汇洞察</li>
+<li>信息来源</li>
+<li>方法论说明</li>
+</ol>
+<hr>
+<h2>一、一句话定义</h2>
+<p><strong>ten-proofs</strong> 不是一套可复用的证明引擎代码库，而是 OpenAI 用内部下一代模型 Astra，在约一周、约 2000 美元量级 token 成本下，对十个「至少十年没有核心进展」的数学与理论计算机科学开放问题给出证明，并把每一条论证落成可机器校验的 Lean 4 证书、公开论文与推理叙事的研究方法发布包。</p>
+<p>它真正卖的不是「又解了十道题」，而是一套面向研究级开放问题的<strong>可审计生产流程</strong>：选题门槛、模型发现、人工整稿、形式化、独立核校验、归因声明，全链路打包。</p>
+<hr>
+<h2>二、纵向分析：从诞生到当下</h2>
+<h3>2.1 起源：当「能做题」不再够用</h3>
+<p>2024 到 2025 年间，AI 数学能力的公共叙事几乎被竞赛绑住了。DeepMind 的 AlphaProof / AlphaGeometry 在 IMO 上拿银牌级正式解，Harmonic 的 Aristotle、ByteDance 的 Seed-Prover 继续把「金牌等价」往形式化方向推；OpenAI 与 DeepMind 也在自然语言解上宣称金牌级表现。那时候大家比的是：同一套试卷、同一套评分、同一个「像不像人类选手」。</p>
+<p>但研究数学不是考试。考试有标准答案与有限时间；研究有的是几十年没人动的猜想、跨领域的冷知识，以及「证明看起来对、其实漏了一行」的恐惧。</p>
+<p>另一条暗线同时长起来。Thomas Bloom 在 2023 年搭起 <a href="https://www.erdosproblems.com">erdosproblems.com</a>，把 Erdős 散落在上千篇论文里的问题收成可检索清单。到 2025 年底评论区开放后，这里迅速变成业余研究者、本科生、职业数学家和 AI hobbyist 的公共靶场。Quanta 在 2026 年 8 月的长文里写得很清楚：大公司后来也把这份清单当作非正式 benchmark——因为「开放问题仓库」比 IMO 更接近真实研究的抽样方式。</p>
+<p>OpenAI 自己的叙事起点，则落在 2026 年 5 月 20 日：一个未发布内部模型给出了 Erdős 单位距离猜想的反例。这不是「又刷了一道竞赛题」，而是用代数数论里的构造手段，推翻了一个被广泛相信为真的离散几何猜想。随后一批顶尖数学家（含 Gowers、Alon、Tsimerman 等）写了 human-digested 评注稿；Gowers 甚至说，若这是人类投稿 Annals，他会毫不犹豫建议接收。那一次发布的署名方式很刺眼：作者栏写的是 “OpenAI”。</p>
+<p>单位距离结果还带来一个副作用：数学共同体开始认真讨论 <strong>AI 结果该怎么署名、怎么归功、怎么审核</strong>。2026 年 6 月初的 Leiden Declaration 直接点名：不可靠证明、归因缺失、闭源依赖、过度炒作、研究议程被商业绑架。OpenAI 的 unit-distance 发布，在宣言作者们的讨论里被当作风险样本之一。</p>
+<p>所以 ten-proofs 不是从零冒出来的炫技仓库。它是在「竞赛金牌叙事」与「开放问题研究」两条线交叉后，OpenAI 用更重的验证标准，对 Leiden 批评作出的制度化回应。</p>
+<p>若再往前追半步，会看到更早的方法论伏笔。形式化数学社区花了十年把 mathlib 做成可依赖的公共库；Lean FRO 把证明助手从「专家玩具」推向工程基础设施；Comparator、nanoda 这类独立检查工具的出现，则让「我不信任你们的编译器」也能被制度化回应。OpenAI 并没有发明 Lean，它只是在需要向外界证明自己没在吹牛时，选了共同体已经准备好的硬通货。</p>
+<p>另一条伏笔来自提示工程与 agent 编排。Scientific American 对 Cycle Double Cover 一事的报道提到：人类写的 prompt 大量是 scaffolding，目的是强迫模型投入足够算力、禁止它轻易回答「这题未解决」、并调度多达 64 个并行子代理互相纠错。hobbyist 在 Erdős 站点上学会的「gaslight 模型、交叉检查、死磕到底」，与实验室内部的 harness 其实是同一类东西，只是后者被产品化、规模化了。ten-proofs 的 <code>framework: Codex</code> 标注，应放在这条谱系里理解：研究方法首先是长期任务编排，其次才是单次推理的聪明程度。</p>
+<h3>2.2 诞生节点：2026 年 8 月 1 日的一次打包发布</h3>
+<p>仓库元数据很干净：</p>
+<ul>
+<li>仓库：<a href="https://github.com/openai/ten-proofs"><code>openai/ten-proofs</code></a></li>
+<li>创建时间：2026-08-01</li>
+<li>描述：Lean certificates accompanying proofs in mathematics and theoretical computer science</li>
+<li>主语言：Lean</li>
+<li>许可证：Apache-2.0</li>
+<li>配套文章：<a href="https://openai.com/index/ten-advances-in-mathematics/">Ten advances in mathematics and theoretical computer science</a></li>
+<li>论文 PDF：<code>https://cdn.openai.com/pdf/ten-proofs-oai.pdf</code></li>
+<li>推理叙事 PDF：<code>https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf</code></li>
+</ul>
+<p>仓库几乎是一次性投下：截至调研时，主分支可见提交极少（公开记录里有 Boris Alexeev 在 8 月 2 日的提交），Issues 被关闭，没有传统软件项目那种迭代节奏。它更像「研究附件」而不是「持续演进的库」。</p>
+<p>十个结果横跨八个左右的子领域：</p>
+<ol>
+<li>高维球堆积（Cohn–Elkies 线性规划渐近阈值）</li>
+<li>二元码与球面码上界</li>
+<li>非 sofic 群的存在性构造</li>
+<li>Connes 刚性猜想的反例</li>
+<li>算术电路复杂度：permanent 的公式/电路下界</li>
+<li>量子平行重复定理</li>
+<li>最近向量问题（GapCVP）的多项式因子硬度</li>
+<li>Ehrhart 体积猜想的尖锐界</li>
+<li>多色三角 Ramsey 数的超指数下界（Erdős 183）</li>
+<li>极值图论中的 compactness / degeneracy 猜想反例（Erdős 146、180）</li>
+</ol>
+<p>论文正文本身就是一部按章节展开的数学文集，不是「方法论文」。方法信息主要藏在博客声明、<code>formalization.yaml</code>、Comparator 配置，以及 reasoning walkthroughs 里。YFarmX 等二手梳理还指出若干值得写进时间线的细节：全文约 249 页；walkthrough 约 62 页；球堆积章节自称是 1978 年以来对一般球堆积指数的首次改进；非 sofic 群问题可追溯到 Gromov / Weiss 前后约四分之一世纪的开放状态；Connes 章节文末还提到，Shuoxing Zhou 同期借助 GPT-5.6 Sol 也独立得到反例——同季并发、双方都不知道对方，这种「同时发现」在 AI 加速下变得异常密集。</p>
+<p>发布当日，Erdős Problems 数据库未必立刻改状态。维护者本就声明状态反映个人当前信念，手工更新跟不上公司新闻节奏。这不是对结果的否定，恰恰说明 ten-proofs 试图缩短的，正是「宣称」与「共同体登记」之间的空窗：Lean 证书让空窗里的正确性争议可以并行推进，而不必所有人都先排队等一位专家读完 249 页。</p>
+<h4>从 5 月到 8 月：方法如何一步步变硬</h4>
+<p>把 OpenAI 相关数学发布按「验证硬度」排序，会看到清晰升级：</p>
+<ol>
+<li><strong>单位距离（2026-05）</strong>：自然语言证明 + 顶尖数学家评注背书。信任来源主要是人。</li>
+<li><strong>Cycle Double Cover（约 2026-07）</strong>：模型（GPT-5.6 Sol Ultra）在多 agent 编排下给出证明；随后出现外部研究者主导的 Lean 形式化（如 CDC_lean）。信任开始向机器迁移，但形式化最初并非官方一等公民。</li>
+<li><strong>凸优化间隙等个例</strong>：领域专家长 prompt + 模型 + Lean 验证，展示「人定方向、机填证明」的协作模式。</li>
+<li><strong>ten-proofs（2026-08-01）</strong>：十个跨领域结果，官方自带零 sorry 证书、公理清单、Comparator 挑战与机构归因声明。验证硬度被做成默认配置，而不是事后补丁。</li>
+</ol>
+<p>这条升级曲线很重要。它说明 OpenAI 不是突然「学会了形式化」，而是在连续公共压力下，把每一次发布都当成规范试验：哪些信任机制够用，哪些会被 Bloom 式归因批评打穿，哪些必须预装进仓库。</p>
+<h3>2.3 研究方法论：一条五段流水线</h3>
+<p>若把 ten-proofs 当作「研究方法」而不是「结果陈列柜」，其核心可以拆成五段。</p>
+<h4>阶段 A：选题——用「十年停滞」做难度过滤器</h4>
+<p>多家报道（含 BleepingComputer、Developers Digest）转述 OpenAI 的筛选口径：这些问题的<strong>核心结果至少十年没有实质进展</strong>，多数更久。这不是随机挑十道「看起来难」的题，而是用时间停滞当 proxy，降低「其实文献里早有人做过、只是没被索引到」的假阳性——Bloom 站点上 hobbyist 反复踩过的坑。</p>
+<p>选题还有第二个维度：<strong>领域分散</strong>。球堆积、算子代数、量子信息、格密码、极值组合同时出现，说明评估目标不是某一条数学线上的专项微调，而是通用研究型推理在陌生子领域迁移的能力。这与 MiniF2F / PutnamBench 那种「同分布竞赛题」评估形成对照。</p>
+<p>第三个维度是<strong>共同体兴趣</strong>。官方表述强调：这些问题对各自社区有实质兴趣，其中若干对更广泛数学界也重要。换句话说，选题同时服务科学意义与公关可辨识度——Erdős 问题、Connes 猜想、球堆积，都是「外行也听得懂名字」的对象。</p>
+<p>还可以读出第四个、更隐蔽的选题逻辑：<strong>陈述可形式化</strong>。十个结果大多能被压成清晰的全称/存在陈述——「对一切维度成立某极限」「存在满足某性质的群」「某复杂度下界」「某猜想的定量反例」。这类陈述天然适合 Lean。反过来，高度定义开放性、依赖品味判断的「漂亮理论重建」，很难成为第一批证书型发布的主角。研究方法因此带有选择偏差：它偏好「可机器关门」的问题，不一定代表数学中最重要的问题，但代表当下 AI 发布最能防守的问题。</p>
+<p>十年停滞过滤器也有代价。它可能系统性地偏好「长期卡住、但或许只需已知工具重新组合」的题目——Cycle Double Cover 被 Bloom 评价为短而初等、本可以在 1980 年代被发现，正是这类风险的提醒。ten-proofs 里的非 sofic 与 Connes 反例看起来更重，球堆积渐近则直接改写 1978 年指数；不同题目的「真正难度」并不均匀。方法上应把「十年无进展」理解成<strong>必要的粗筛</strong>，而不是充分的难度证明。</p>
+<h4>阶段 B：发现——内部 Astra 在评测期「找到论证」</h4>
+<p>官方链路说得很短：结果来自 Astra 的内部版本，在开发期评估中取得；找到这些解所需 token，按 Sol API 价格大约 2000 美元。<code>formalization.yaml</code> 进一步写明：</p>
+<ul>
+<li>automation method: <code>agent</code></li>
+<li>models: <code>Astra (OpenAI)</code></li>
+<li>framework: <code>Codex</code></li>
+<li>wall_time: <code>1 week</code></li>
+</ul>
+<p>这几行信息密度很高。它暗示工作方式不是「单次 completion 吐出终稿」，而是 Codex 框架下的 agent 循环；时间尺度是周级，不是秒级 demo。成本被故意写成「任何有经费的实验室都能负担」的量级——这是在回应 Leiden 宣言里「算力不平等」的指控，至少在推理成本这一层。</p>
+<p>公开材料<strong>没有</strong>给出完整 prompt、搜索树结构、失败率、并行采样宽度、是否有人类在发现阶段插手选题或提示关键文献。因此我们能确认的是「成本上界与框架标签」，不能确认「可完全复现的实验协议」。这一点后文会当作方法学短板讨论。</p>
+<p>YFarmX 对 2000 美元数字的拆读值得保留：它是「找到解」的 token 成本，按当前 Sol 商业价折算，不是整个研究项目的全成本；它不包含一周 wall time 的机会成本、人类整稿时间，也不包含形式化那一轮。即便打完这些折扣，把「二十多年开放的问题」与「两千美元量级推理账单」并置，仍会改变人对研究边际成本的直觉。方法学上，OpenAI 在做一件很少见的事：给发现过程标价。标价既是透明度，也是叙事武器。</p>
+<p>与 7 月 CDC 事件对照，还能看出发现策略的连续性。CDC 报道强调：假设证明存在、禁止轻易宣告未解决、要求长时间坚持、多 agent 并行。ten-proofs 没有公开同等细节，但 Codex agent + 一周 wall time 的组合，强烈暗示同类 harness：把「放弃」变得昂贵，把「交叉验证」变得默认。若这一判断成立，则 Astra 的「聪明」与编排的「固执」是共同变量；只谈模型、不谈 harness，会误判方法。</p>
+<h4>阶段 C：整稿——人 + 同一模型把论证写成论文</h4>
+<p>官方说法是：arguments 由系统生成；随后 humans with the same model 把它们整理成 manuscript。论文署名为 OpenAI，没有列出个人作者。这与 5 月单位距离论文的署名策略一致，也与 Leiden「AI 不该被写成人类作者」的压力形成张力：OpenAI 选择把机构写成作者，同时明确声明「数学论证由系统产生，人负责正确性」。</p>
+<p>整稿阶段的意义常被低估。研究数学的传播介质仍是可读论文，不是 Lean 文件。Walkthrough PDF 的摘要写明：这些笔记是模型阅读原始思维链与最终文稿后，重建「想法如何汇合」的叙事——包括先走通的路径、撞墙的弯路、视角切换、决定性洞见。也就是说，他们不只发布「正确的证明」，还试图发布「可被人类消化的发现过程替代物」。</p>
+<p>对共同体来说，这比裸 dump 200 页 AI 证明更可操作；对方法学来说，这也承认一个现实：机器校验解决的是正确性，解决不了可理解性。</p>
+<p>整稿阶段还有一层政治含义。Leiden 宣言主张 credit 与 responsibility 都属于人类，不应授予自动系统。OpenAI 公开链接该宣言，表示尊重，却在署名上拆开两半：接受责任，拒绝把人类写成数学论证的作者。具体操作是机构署名 “OpenAI”，致谢里出现真实数学家——例如报道提到 Connes 章感谢 Popa、Charles、Houdayer，非 sofic 章感谢 Bradford、Chapman、Dogon、Fournier-Facio——他们扮演的是传统「读稿改进者」，却在一份没有人类作者的文本里承担新功能：证明仍有人类目光扫过历史语境与表述。</p>
+<p>这套安排是否会被期刊接受，暂缺定论。但它已经把抽象争论变成具体判例：一份关于 Cohn–Elkies 界、没有个人作者、却有可编译证书的论文，学科要怎么归档？</p>
+<h4>阶段 D：形式化——把论证再写成 Lean 证书</h4>
+<p>每个结果对应独立 Lean 模块，例如 <code>SpherePacking.lean</code>、<code>NonSoficGroup.lean</code>、<code>GapCVP.lean</code>。工程栈固定为：</p>
+<ul>
+<li>Lean 4.32.0</li>
+<li>mathlib（<code>leanprover-community</code>，rev <code>v4.32.0</code>）</li>
+<li>Lake 构建</li>
+<li><code>lake exe cache get &amp;&amp; lake build All</code></li>
+</ul>
+<p><code>formalization.yaml</code>（v0.3）是这份仓库最像「研究元数据标准」的文件。它声明：</p>
+<ul>
+<li>全局 <code>sorry_count: 0</code>，定义中也无 sorry</li>
+<li>仅使用经典数学常见的三条公理：<code>propext</code>、<code>Classical.choice</code>、<code>Quot.sound</code></li>
+<li>12 个主定理声明（覆盖 10 个结果；有的结果对应多个声明）</li>
+<li>每个主结果绑定 Comparator 配置</li>
+<li>review status: <code>agent-reviewed</code></li>
+<li>致谢 Sphere-Packing-Lean 先验工作</li>
+</ul>
+<p>文件体积也能侧面说明形式化强度：若干模块达到百万到五百万字节量级（如 MetricCodes、GapCVP），说明不是「声明一句定理 + 调用库」的薄包装，而是大规模形式化工程。</p>
+<p>公开信息把形式化也归因给模型（Astra 在人类协助准备后完成 Lean 化）。仓库依赖 Comparator，并为每个挑战提供 JSON：指定 challenge/solution module、定理名、允许公理、<code>enable_nanoda: true</code>。Comparator 来自 Lean FRO，可在沙箱中检查：证明的是不是同一陈述、公理是否越界、内核是否接受；还能走独立的 nanoda 内核，降低「只信任 Lean 自家内核」的单点风险。</p>
+<p>这一步把验证从「请专家读三个月」改成「任何人可以 <code>lake build</code> / <code>lake exe comparator ...</code>」。它没有取消同行评议对意义、新颖性、文献定位的判断，但把正确性争议的门槛大幅抬高。</p>
+<p>形式化也引入新的方法风险，OpenAI 自己的评论者与二手分析都点到了：<strong>Lean 证明「同一个声明」不等于证明「领域关心的那个猜想」</strong>。把自然语言中的 Connes 刚性、sofic 近似、Ehrhart 条件翻译成类型论语句，本身就是数学判断。证书保证演绎封闭，不保证形式化忠实。<code>review: agent-reviewed</code> 进一步提醒：连形式化审阅目前也主要是 agent，不是领域编辑部。因此，ten-proofs 最强之处与最需警惕之处是同一枚硬币——它把正确性检查工业化了，却把「声明是否说对了问题」留在更细的专家劳动里。</p>
+<p>Sphere-Packing-Lean 先验工作出现在 acknowledgements / prior_work 字段里，说明形式化并非从文化真空开始。球堆积方向已有社区积累，Astra 的证书站在既有 Lean 数学之上。方法上这很正常，但对外传播若只强调「模型一周做完」，会抹掉基础设施劳动。好的研究方法叙事应当同时记账：模型推理、人类整稿、社区库、检查器工具，四笔账都在。</p>
+<h4>阶段 E：发布与归因——用开放工件回应制度压力</h4>
+<p>发布包几乎按「审计清单」设计：</p>
+<table>
+<thead>
+<tr>
+<th>工件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>博客帖</td>
+<td>宣布结果、说明流水线、回应 Leiden</td>
+</tr>
+<tr>
+<td>长篇论文 PDF</td>
+<td>人类可读数学论证</td>
+</tr>
+<tr>
+<td>reasoning walkthroughs</td>
+<td>发现过程叙事，降低黑箱感</td>
+</tr>
+<tr>
+<td>Lean 仓库</td>
+<td>机器可检查证书</td>
+</tr>
+<tr>
+<td>formalization.yaml</td>
+<td>公理、sorry、定理声明、自动化元数据</td>
+</tr>
+<tr>
+<td>ComparatorChallenges</td>
+<td>独立二次校验入口</td>
+</tr>
+</tbody>
+</table>
+<p>归因立场可以概括成四句：</p>
+<ol>
+<li>不把完全由 AI 生成的证明写成人类作者的智力成果。</li>
+<li>机构（OpenAI）对正确性负责。</li>
+<li>人类参与了文稿准备与形式化协助。</li>
+<li>希望数学共同体接手：定位意义、发展后续、把想法真正「养活」。</li>
+</ol>
+<p>这不是单纯道德宣言，而是方法学的一部分：当证明生产速度超过人类阅读速度时，<strong>署名诚实 + 机器校验</strong>变成维持学科信任的最低配置。</p>
+<h3>2.4 前史如何「锁死」了这条方法路径</h3>
+<p>把时间线拉长，ten-proofs 的方法选择几乎被几个前序决策锁定。</p>
+<p><strong>第一，Lean 成为默认证书语言。</strong> 2024–2025 的 IMO 形式化竞赛、mathlib 生态扩张、Comparator / nanoda 一类工具出现，让「公开 Lean 文件」逐渐变成 AI 数学结果的硬通货。OpenAI 若只发自然语言证明，会被 Aristotle / Seed-Prover 阵营用「人类裁判也可能看走眼」反将一军；若发 Lean，就能把战场挪到可编译性。</p>
+<p><strong>第二，单位距离事件重塑了发布模板。</strong> 5 月那次已经试验了「机构署名 + 专家评注 + 公开 PDF」。ten-proofs 把专家评注替换成更强的东西：机器证书 + 独立核。从「请大牛背书」升级到「请内核背书」，这是信任机制的迁移。</p>
+<p><strong>第三，Codex/agent 框架把证明搜索产品化。</strong> yaml 里写 framework: Codex，说明他们把数学发现放进与软件工程 agent 同源的工具循环：读写、尝试、反馈、再尝试。数学不再被当作纯聊天补全，而被当作长期任务。</p>
+<p><strong>第四，Erdős 问题生态提供了公共靶面，也暴露了旧评估的脆弱。</strong> hobbyist 用公开模型刷题、文献检索失败、无人阅读的超长 AI 论文泛滥——这些都在逼实验室回答：你们的结果凭什么可信？ten-proofs 的答案是：十年停滞过滤器 + Lean + Comparator + 明确归因。</p>
+<h3>2.5 阶段划分：萌芽、转向、制度化</h3>
+<p>若给 OpenAI 的 AI-math 方法史做粗分：</p>
+<p><strong>萌芽期（至 2025）</strong>：竞赛与内部评测为主，能力叙事跟着 IMO / 基准走；形式化多在外部社区与竞品那里更显眼。</p>
+<p><strong>冲击期（2026 年 5–6 月）</strong>：单位距离反例证明「研究级开放问题」可被内部模型击穿；Leiden 宣言同步抬高规范要求；数学家开始用「Annals 级」语言评价 AI 证明。</p>
+<p><strong>制度化发布期（2026 年 7–8 月）</strong>：公开材料显示 Cycle Double Cover、凸优化间隙等 Lean 验证结果陆续出现；8 月 1 日 ten-proofs 把「多领域开放问题 + 全量形式化 + 元数据规范」一次性摊开。Astra 名称随之从传言变成有公开数学战绩的内部模型标签。</p>
+<p>到本稿写作时（发布后第三天），仓库已有数百 star，但学术共同体的深度消化显然还没完成——十个领域各自需要不同专家团。方法已经发布；意义评估才刚开始。</p>
+<p>也可以把这一阶段理解成「从模型能力展示，转向制度能力展示」。5 月证明模型能做出 Annals 级论证；7 月证明多 agent 能在小时级啃下图论名题；8 月则证明实验室愿意把正确性工具链、归因立场和成本数字一并摊开。三次发布叠在一起，才构成完整的方法演进，而不是三次互不相关的公关。读 ten-proofs 若不把前两次放进同一条纵轴，很容易把它误看成突然空降的十个定理，而看不到背后那条越来越硬的信任协议升级路径。</p>
+<h3>2.6 仓库结构本身也是方法声明</h3>
+<p>读目录比读新闻更能看懂他们想让外部做什么：</p>
+<ul>
+<li>根目录十个结果模块 + <code>All.lean</code>：方便一键编译全套</li>
+<li><code>ComparatorChallenges/*.{lean,json}</code>：把「如何独立检查」产品化</li>
+<li><code>formalization.yaml</code>：把 sorry/公理/自动化信息写成机器可读声明</li>
+<li>几乎没有 Python 训练代码、没有搜索算法实现、没有数据集</li>
+</ul>
+<p>所以研究方法的「可复现部分」主要是<strong>验证复现</strong>，不是<strong>发现复现</strong>。外部实验室可以复核证书是否成立；很难按同样协议重跑 Astra 的发现过程。对科学方法而言，这是半开放：结果可审计，过程仍专有。</p>
+<p>这种半开放不是疏忽，而是商业实验室做研究发布时的稳态结构。ten-proofs 把它表达得很露骨——甚至露骨得有方法论自觉。</p>
+<h3>2.7 十个结果在方法上的共性，而非数学内容复述</h3>
+<p>不逐题展开技术细节（那是 249 页论文的工作），只看它们对「研究方法」意味着什么。</p>
+<p>共性一：<strong>多数是构造或界的改进/反例</strong>，不是纯存在性空话。反例与显式构造特别适合形式化，因为目标陈述清晰：「存在满足 P 的对象」「对一切参数成立某不等式」。</p>
+<p>共性二：<strong>跨领域借用工具</strong>。单位距离已展示模型会把数论塔搬进离散几何；walkthrough 目录显示球堆积走到 Fourier / Mellin / 调和测度，非 sofic 群走到 property (T) 与 Leavitt 代数，GapCVP 走到特征 2 的矩直方图与 Hankel 重建。方法上的主张是：通用模型能在「人类专家未必立刻跨界」的地方做远距离联想。</p>
+<p>共性三：<strong>失败路径被写进公开叙事</strong>。walkthrough 反复出现 “long detour”“why the first approach was wrong”。这不是装饰，而是在对抗「AI 只会最终答案、没有研究过程」的批评。当然，这些叙事由模型事后重建，是否忠实于真实搜索轨迹，公开材料无法独立核验——需要标注为「有限透明」。</p>
+<p>共性四：<strong>形式化覆盖主定理，不等于覆盖论文全部旁白</strong>。Comparator 绑定的是声明列表中的核心定理。方法上应区分：机器证明了什么、论文还声称了什么、哪些启发性讨论仍停留在自然语言层。</p>
+<p>若按「证明对象类型」再切一刀，十个结果大致落入三类方法原型：</p>
+<ol>
+<li><strong>尖锐渐近/界的确定</strong>（球堆积、码、Ehrhart、部分复杂度下界）：关键是找到正确的解析对象或组合证书，并证明上下界咬合。</li>
+<li><strong>反例/显式构造</strong>（非 sofic、Connes、极值图论猜想）：关键是造出违背直觉的对象，并验证它满足一长串性质。</li>
+<li><strong>归约与定理强化</strong>（GapCVP、量子平行重复、Ramsey 下界）：关键是把难题连回已知硬核，或把已知原理推到过去够不着的一般情形。</li>
+</ol>
+<p>三类对 agent 的压力不同。构造类吃「远距离类比 + 耐心验证」；尖锐界类吃「选择正确解析框架」；归约类吃「复杂度证明的细账」。ten-proofs 把三类捆进同一发布，等于主张 Astra 不是某一证明模式的偏科生。对方法论读者，这比「十个都很难」更有信息量：它在测的是模式覆盖，而不只是单点运气。</p>
+<p>并发发现的插曲也该写进方法史。Connes 反例在同一季节被 Zhou（借助 GPT-5.6 Sol）独立得到，说明当模型能力越过阈值，开放问题的「剩余寿命」会集体缩短，优先权纠纷与同时发现会变日常。研究方法若仍按前 AI 时代的单打独斗节奏设计投稿与署名，会持续产生摩擦。ten-proofs 选择机构署名 + 致谢读稿者，某种程度上是在为这种高并发世界预演新惯例。</p>
+<h3>2.8 尚未闭合的方法学问题</h3>
+<p>诚实列出公开信息的空洞，本身也是研究这份库的一部分：</p>
+<ol>
+<li><strong>发现阶段人类介入程度暂缺精确披露。</strong> 「arguments generated by the system」与「humans helped prepare manuscripts and formalize」之间的边界，对外仍偏粗。</li>
+<li><strong>题库如何生成、失败题占比多少暂缺。</strong> 我们看到的是成功的十个，不是评估集全貌。</li>
+<li><strong>Astra 架构、是否专用数学 RL、与 GPT 系列关系暂缺。</strong> 只有 “next major model / internal version” 级描述。</li>
+<li><strong>agent-reviewed 的具体协议暂缺。</strong> yaml 写了 review status，但没有公开审稿清单或交叉验证记录。</li>
+<li><strong>社区接受度仍在早期。</strong> 正确性可机器检查；重要性、优先权、文献归因是否充分，仍取决于各领域专家。</li>
+</ol>
+<p>这些空洞不否定结果，但限制我们把 ten-proofs 误读成「完全开放的可复现科学实验」。它更准确的身份是：<strong>高标准公开的研究主张 + 可独立核查的正确性证书</strong>。</p>
+<hr>
+<h2>三、横向分析：竞争图谱</h2>
+<h3>3.1 竞品场景判断：场景 C（充分竞争，但赛道正在裂开）</h3>
+<p>AI 数学不是单赛道，至少裂成三条：</p>
+<ol>
+<li><strong>竞赛/基准赛道</strong>：IMO、MiniF2F、PutnamBench、ProofNet</li>
+<li><strong>开放问题猎杀赛道</strong>：Erdős 清单、长期猜想、公司内部评测集</li>
+<li><strong>形式化基础设施赛道</strong>：mathlib、autoformalization、Comparator、专用 prover 模型</li>
+</ol>
+<p>ten-proofs 主要落在第 2 条，并用第 3 条的最强工具给自己背书；它刻意不和第 1 条比分数。横向对比若只比 pass@k，会完全看错对象。</p>
+<p>代表性对比对象取四个：DeepMind AlphaProof 系、Harmonic Aristotle、开源 prover（以 DeepSeek-Prover 为代表）、以及 Erdős 社区的「公开模型 + 人工织网」实践。Seed-Prover 等作为同簇提及。</p>
+<h3>3.2 DeepMind AlphaProof / AlphaGeometry：把形式化搜索做成竞赛武器</h3>
+<p>AlphaProof 的经典方法画像是：强化学习 + Lean 证明搜索，测试时针对目标题做专用强化；几何则往往走专用系统。2024 IMO 银牌级正式解，是「LLM + ITP + 搜索」进入公共视野的标志事件。</p>
+<p>与 ten-proofs 比，差异不在「用不用 Lean」，而在<strong>问题本体论</strong>：</p>
+<ul>
+<li>AlphaProof 优化的是有标准答案、时间盒、可重复评分的竞赛题。</li>
+<li>ten-proofs 优化的是无标准答案、跨十年停滞、需要共同体事后定位意义的研究问题。</li>
+</ul>
+<p>方法论后果很具体。竞赛系统可以围绕形式化题库做大规模 RL，用 pass rate 当梯度；开放问题系统必须先解决「什么叫进展」「如何避免重新发现旧结果」「如何让证明进入人类文献」。AlphaProof 更像运动员训练体系；ten-proofs 更像实验室成果发布规范。一个追求可重复的分数，一个追求可辩护的主张。</p>
+<p>DeepMind 在 Erdős 清单上也并非缺席：Quanta 记载，2026 年初有 24 人团队用 Gemini 系统评估约 700 条标记为 open 的猜想，解决四题并找回九个被遗忘的旧解；5 月另有团队报告「最强 agent 以每题数百美元成本自主解决 353 题中的 9 题」，且筛选偏向已形式化的问题。这说明横向竞争已从「谁 IMO 更高」扩展到「谁能便宜地清理开放问题」。ten-proofs 的差异化不在「也做开放问题」，而在<strong>样本更苛刻、跨域更深、发布规格更重</strong>：不是九个清单题，而是十个十年停滞、覆盖算子代数与量子信息的旗舰包，并且官方自带 Comparator。</p>
+<p>还应注意训练信号差异。AlphaProof 类系统能从证明搜索的成败获得密集反馈；研究级开放问题的反馈极稀疏——大多数尝试以失败或「其实文献里有」告终。OpenAI 选择在开发期评估中「碰巧/系统地」挖到十个赢家再打包，这一披露方式本身就不对称：横轴竞品若只晒成功子集，分数会失真；纵轴读者若把十个成功当成命中率，会高估方法的平均效力。</p>
+<h3>3.3 Harmonic Aristotle：正式证明优先的产品化路线</h3>
+<p>Aristotle（arXiv:2510.01346）把系统拆成 Lean 搜索、非正式引理生成/形式化、专用几何求解器，搜索侧使用 Monte Carlo Graph Search 一类 hypertree/hypergraph 结构。它强调：只返回通过 Lean 的结果；2025 IMO 五题正式解，走金牌等价叙事，并推进 API 化。</p>
+<p>Aristotle 与 ten-proofs 共享「Lean 是真理源」的信仰，但产品目标不同：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Aristotle</th>
+<th>ten-proofs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主场景</td>
+<td>竞赛题与可请求的证明服务</td>
+<td>一次性研究级结果发布</td>
+</tr>
+<tr>
+<td>系统公开度</td>
+<td>有论文描述架构组件</td>
+<td>几乎只公开产物，不公开系统</td>
+</tr>
+<tr>
+<td>验证</td>
+<td>Lean 编译</td>
+<td>Lean + Comparator/nanoda + yaml 元数据</td>
+</tr>
+<tr>
+<td>成功度量</td>
+<td>IMO/基准与可用性</td>
+<td>十年开放问题突破 + 共同体接手</td>
+</tr>
+</tbody>
+</table>
+<p>若问「谁更像可部署的证明系统」，是 Aristotle。若问「谁更像把 AI 数学发现抬到科学出版新规范」，是 ten-proofs。一个卖能力接口，一个卖研究主张的可信封装。</p>
+<p>Aristotle 论文还点破一个横向关键分歧：OpenAI / DeepMind 的部分 IMO 金牌叙事建立在自然语言解与人类裁判上；Aristotle / Seed-Prover 坚持正式解。ten-proofs 站到了后者的验证哲学一边，却又保持前者的「通用大模型发现」气质——它不像专用 ATP 产品，更像通用模型在研究评测中的战报，只是战报附带了 ATP 级证书。这种混血身份，使它很难被单一赛道的排行榜收编。</p>
+<p>ByteDance 的 Seed-Prover 与 Aristotle 同属「正式 IMO」簇，横向意义在于：形式化金牌不再是一家独有叙事。当竞赛侧被多家填满，差异化必然上移到开放问题与发布规范——这正是 ten-proofs 出现的产业逻辑。</p>
+<h3>3.4 DeepSeek-Prover 等开源路线：把方法敞开放进训练配方</h3>
+<p>DeepSeek-Prover-V2 的公开方法很「学术论文友好」：用通用模型做子目标分解与形式化，小模型搜索子目标，合成 cold-start，再以 Lean 二元正确性做 RL。后来还有 Pythagoras-Prover 一类工作继续卷 MiniF2F / PutnamBench 的计算效率。</p>
+<p>这条线的核心贡献是<strong>可训练、可复现、可本地跑的 prover 方法论</strong>。它回答「怎样学证明」；ten-proofs 回答「怎样发布证明」。两者并不直接互替。实际上，ten-proofs 这种大规模研究级形式化产物，未来反而可能成为开源 prover 的高价值训练/评测素材——前提是许可与归属被正确处理。</p>
+<p>开源路线目前仍明显更强于竞赛分布内的正式证明，弱于跨领域开放问题的自主发现。ten-proofs 展示的是闭源前沿模型在发现端的跳跃；开源阵营展示的是方法透明与可分发。</p>
+<p>从研究方法转让的角度看，开源 prover 回答的是 Kuhn 所谓「范式的可学习性」：外人能否按配方重做。ten-proofs 回答的是「主张的可检验性」：外人能否按证书复核。科学史上这两种开放并不总是一起出现——有时公开配方但结果难复核，有时公开结果但配方保密。2026 年的 AI 数学刚好把这两种开放拆给了不同阵营。一个健康的生态需要两边都在；只有战报没有配方，会走向神谕；只有配方没有旗舰结果，又难以证明方法触及研究前沿。</p>
+<p>Mistral 的 Leanstral 等开放权重模型被 Developers Digest 提及为 miniF2F 饱和的对照。横向含义是：形式语言输出正在成为多厂商默认，不再是 DeepMind 专属美学。ten-proofs 选择 Lean，因此也是在这一收敛上下注。</p>
+<h3>3.5 Erdős 社区实践：低成本、高噪声、真问题</h3>
+<p>Quanta 描述的社区方法几乎是人肉 agent 循环：诱导模型相信问题不难、多实例交叉检查、再用 Aristotle 等工具做形式化、请真正数学家复核。单价可以很低，产量可以很高，但也制造大量无人阅读的超长 PDF，以及「标记为 open 其实早被解决」的文献事故。</p>
+<p>相对这套草根方法论，ten-proofs 像是实验室版纠偏：</p>
+<ul>
+<li>用十年停滞降低「假开放」</li>
+<li>用机构署名与责任声明降低「匿名垃圾证明」</li>
+<li>用 Lean/Comparator 降低「看起来像证明」</li>
+<li>用 walkthrough 试图降低「不可读」</li>
+</ul>
+<p>社区的优势是开放性与题目覆盖面；实验室的优势是单题深度与发布规范。2026 年的真实图景不是谁取代谁，而是两者互相提供原料：社区提供题面与快速试错，实验室提供高规格结果与模型能力上限。</p>
+<p>社区还暴露了评估污染问题。一旦某清单成为 PR 战场，人类研究者的参与动机、题目的「剩余趣味」、甚至 open/closed 标签的维护质量都会被扭曲。Alon 停止做 Erdős 题、Tao 减少在该社区停留，是横截面上的真实用户行为，不是外生噪声。ten-proofs 把战场迁到十年停滞的高声望问题上，短期能避开「刷清单」讥讽，长期仍可能制造新的挤出：当 Connes、球堆积也开始频繁出现在公司博客里，谁还愿意把职业生涯押在下一道可能被周末 agent 清掉的题上？研究方法评估如果只计算解题数量，会漏掉这种激励系统的崩坏。</p>
+<p>另一个社区教训是归因。CDC 证明被称赞为漂亮，也被批评对 Bermond–Jackson–Jaeger 等先验策略引用不足。ten-proofs 在球堆积形式化上点名 prior_work，在若干章节致谢专家读稿，比早期战报更完整，但仍无法自动解决「模型训练语料里吸收了谁的思想」这一深层归因难题。Leiden 要求的 proactive attribution，对闭源模型而言几乎是结构性难题：模型自己也说不清师承。walkthrough 展示思维故事，却替代不了参考文献学。</p>
+<h3>3.6 方法对比总表（研究视角）</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>ten-proofs / Astra</th>
+<th>AlphaProof 系</th>
+<th>Aristotle</th>
+<th>DeepSeek-Prover 系</th>
+<th>Erdős hobbyist 流程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标</td>
+<td>研究级开放问题突破</td>
+<td>竞赛金牌/银牌</td>
+<td>竞赛 + 正式证明产品</td>
+<td>基准 SOTA / 开源 prover</td>
+<td>清理清单上的开放题</td>
+</tr>
+<tr>
+<td>问题选择</td>
+<td>十年停滞 + 多领域</td>
+<td>正式竞赛集</td>
+<td>IMO 等</td>
+<td>MiniF2F 等</td>
+<td>Bloom 清单</td>
+</tr>
+<tr>
+<td>发现机制</td>
+<td>内部 agent（Codex/Astra）</td>
+<td>RL + 搜索</td>
+<td>MCGS + 引理管道</td>
+<td>子目标分解 + RL</td>
+<td>多轮提示/交叉审查</td>
+</tr>
+<tr>
+<td>验证闭环</td>
+<td>Lean + Comparator/nanoda</td>
+<td>Lean</td>
+<td>Lean</td>
+<td>Lean</td>
+<td>偶发 Lean/人工</td>
+</tr>
+<tr>
+<td>人工角色</td>
+<td>整稿、负责正确性</td>
+<td>系统研发/评测</td>
+<td>系统研发/产品</td>
+<td>训练与开源</td>
+<td>选题、催促、找专家</td>
+</tr>
+<tr>
+<td>可复现重点</td>
+<td>证书可复核</td>
+<td>部分论文级复现</td>
+<td>部分架构公开</td>
+<td>模型与配方公开</td>
+<td>流程可抄，结果不稳</td>
+</tr>
+<tr>
+<td>透明度短板</td>
+<td>发现协议专有</td>
+<td>系统细节有限</td>
+<td>权重/服务受限</td>
+<td>距研究级发现仍远</td>
+<td>文献与正确性噪声</td>
+</tr>
+<tr>
+<td>生态位</td>
+<td>高规格研究发布模板</td>
+<td>竞赛形式化标杆</td>
+<td>正式证明商业化</td>
+<td>开放训练基础设施</td>
+<td>分布式开放问题淘金</td>
+</tr>
+</tbody>
+</table>
+<h3>3.7 用户与共同体口碑：赞的是能力，争的是意义与规范</h3>
+<p>正面声音很强：单位距离阶段已有 Gowers「Annals 级」评价；Alon 称 AI 正剧烈改变研究方式；Quanta 把 8 月十结果写成能力相变的证据链。Developers Digest 一类技术评论则抓住 Lean 证书与 2000 美元成本：验证方式变了，研究成本账也变了。</p>
+<p>保留意见同样尖锐，且多半不是否认编译通过：</p>
+<ul>
+<li>Leiden 阵营担心闭源、归因、炒作与议程失控。</li>
+<li>Bloom 警告不会验证的人批量生产长文。</li>
+<li>部分数学家从 Erdős 题上撤退，因为「AI 开始做了就没意思了」——这是动机危机，不是正确性危机。</li>
+<li>对 ten-proofs 特有的疑虑会是：十个结果是否都被各自领域消化？walkthrough 是否美化了搜索过程？「agent-reviewed」能否替代传统审稿？</li>
+</ul>
+<p>横向看，ten-proofs 目前最像把争论从「AI 会不会做数学」推进到「AI 数学结果应当以什么制度被接收」。</p>
+<p>口碑场里还有一类「冷静技术读者」：他们不一定在乎 Connes 猜想的史学地位，却立刻去看 <code>formalization.yaml</code> 和 Comparator JSON。对这群人，研究方法的可读界面已经从博客散文变成了清单式元数据。谁能把 sorry、公理、定理名、检查命令写成可执行规范，谁就更像在做工程化科学。ten-proofs 在这个细分读者群里的得分，甚至可能高于它在传统数学家群里的即时得分——因为后者仍需数周消化每个领域章节。</p>
+<h3>3.8 ten-proofs 的生态位：填补的是「研究发布规范」空白</h3>
+<p>竞赛赛道已经拥挤；开源 prover 赛道也拥挤；真正稀缺的是：</p>
+<blockquote>
+<p>当模型真的对长期开放问题给出新论证时，怎样发布，才既不被指控黑箱欺诈，又不强迫整个学科退回「只信口头权威」。</p>
+</blockquote>
+<p>ten-proofs 给出的临时标准大致是：</p>
+<ol>
+<li>选题说明难度代理（十年停滞）</li>
+<li>成本与框架量级披露</li>
+<li>人类/AI 贡献边界声明</li>
+<li>自然语言论文 + 过程叙事</li>
+<li>零 sorry Lean 证书</li>
+<li>公理清单</li>
+<li>独立证明检查器配置</li>
+</ol>
+<p>它未必是最终标准，但已经是 2026 年夏最完整的公开模板之一。竞品可以在分数上压过它，却很难否认：这套发布规格抬高了行业地板。</p>
+<hr>
+<h2>四、横纵交汇洞察</h2>
+<h3>4.1 历史如何塑造了今天的位置</h3>
+<p>ten-proofs 今天的位置，几乎是被前两件事焊死的。</p>
+<p>没有 5 月的单位距离冲击，OpenAI 不必这么快把「研究级发现」当成主叙事；没有 6 月 Leiden 的规范压力，它也不必把归因、责任、形式化做成如此显眼的发布配件。仓库看起来像数学结果集，骨架却是一套<strong>信任工程</strong>。</p>
+<p>同时，若没有 Lean 生态在竞赛年代被 AlphaProof / Aristotle / 开源 prover 共同养肥，OpenAI 也拿不出 Comparator + nanoda 这种「二次内核」话术。纵轴上的能力跃迁，借到了横轴上基础设施成熟的东风。</p>
+<h3>4.2 把竞品也放到时间线上：三条进化路径</h3>
+<ul>
+<li><strong>DeepMind 路径</strong>：竞赛形式化 → 证明搜索与几何专用系统 → 再向开放问题清单延伸。强项是系统方法清晰、竞赛战绩早。</li>
+<li><strong>Harmonic 路径</strong>：正式证明优先 → IMO 金牌等价 → API/产品。强项是「不通过 Lean 就不输出」。</li>
+<li><strong>OpenAI 路径</strong>：通用推理模型 → 研究级单点突破（单位距离）→ 多领域批量突破 + 发布制度化（ten-proofs）。强项是发现端的广度与公关/规范打包能力；短板是系统细节最不透明。</li>
+</ul>
+<p>开源 prover 路径平行前进：把「如何训练」讲清楚，但还没在「十年开放问题批量突破」上形成对等事件。</p>
+<h3>4.3 优势的历史根源</h3>
+<p><strong>广度优势</strong>来自通用模型路线：不先做球堆积专用系统，才可能一周内跨八个区块出活。</p>
+<p><strong>可信度优势</strong>来自竞赛年代留下的 Lean 工具链，加上单位距离后被迫学会的署名与责任话术。</p>
+<p><strong>成本叙事优势</strong>来自把 token 账单公开写成约 2000 美元——把「神秘算力神迹」改写成「可定价的研究流程」。这在横轴上直接打击「只有巨头玩得起」的简单批评，尽管发现模型本身仍不开放。</p>
+<p><strong>可审计优势</strong>来自把 formalization.yaml / Comparator 当作一等公民，而不是 README 里的一句 “also formalized”。</p>
+<h3>4.4 劣势的历史根源</h3>
+<p><strong>过程不透明</strong>几乎是闭源通用模型策略的宿命：能公开的是产物，不能公开的是数据、强化学习信号与完整评测集。早年为产品保密做的选择，今天变成科学可复现性的债务。</p>
+<p><strong>「成功样本发布」偏差</strong>也有历史原因。公司评估天生展示赢家；科学评估需要分母。十年停滞过滤器提高了单题含金量，却仍无法告诉我们 Astra 在更大题库上的命中率。</p>
+<p><strong>可读性与意义生产仍依赖人类</strong>。机器可以保证「这步不错」，不能自动保证「这结果在该领域意味着什么、该引用谁、该怎样简化」。walkthrough 是在补这块，但它自己也是模型生成的二手叙事。单位距离之后人类数学家迅速改进结果的故事提醒我们：AI 突破往往是新研究的起点，不是终点。</p>
+<p><strong>动机挤出效应</strong>同样值得写进方法评估。当 Alon 说「AI 开始做 Erdős 题就没必要再做」，说明评估集一旦变成公司 PR 战场，会反噬人类研究者的内在动机。ten-proofs 选更硬的十年问题，部分缓解「刷清单」印象，却也可能把挤出效应推到更高声望的问题上。</p>
+<p><strong>归因结构困境</strong>则来自深度学习本身。模型无法提供可审计的思想谱系，实验室只能用致谢、prior_work 字段和「机构担责」做外部修补。CDC 阶段已被指出的引用不足问题，不会因为有了 Lean 就自动消失——证书不问你是否公平对待了 1983 年的论文。</p>
+<p>把这些劣势放回纵轴看，它们几乎都不是 8 月 1 日才产生的新锅，而是长期路线选择在「突然需要像科学」时暴露的旧账。ten-proofs 的高明之处在于：它没有假装旧账不存在，而是用证书与声明把旧账能补的部分补上，不能补的部分至少标出来。</p>
+<h3>4.5 未来三个剧本</h3>
+<p><strong>最可能的剧本：双轨常态化。</strong><br>
+一边是公开模型与社区继续低成本清理中等开放问题；一边是前沿实验室用 Astra 级模型做高规格、全形式化的「旗舰结果包」。期刊与学会逐步形成披露模板：模型、成本量级、人类角色、Lean 证书、公理列表。Lean 继续充当跨境共同语。ten-proofs 成为被引用的发布先例，而不是孤例。</p>
+<p><strong>最危险的剧本：证书崇拜与意义空洞。</strong><br>
+共同体过度把 <code>lake build</code> 成功等价于「好数学」，放松对新颖性、归因、简化与可教学性的要求。大批形式化正确但无人理解的论文堆积；年轻研究者要么卷不过闭源 agent，要么沦为证书搬运工。Leiden 担心的自主性流失，以「一切皆可编译」的乐观面具出现。</p>
+<p><strong>最乐观的剧本：人机分工被重建。</strong><br>
+模型负责远距离联想、构造搜索、形式化苦力；人类负责问题选择、意义判断、简化重构、开辟新定义。OpenAI 在文末希望共同体「bring the ideas to life」若真发生，ten-proofs 里的每个结果都会派生出更短的人类证明、更广的推广、新的反例与新理论。届时仓库的历史地位，不是「AI 赢了数学」，而是「数学找到了与 AI 共事的交接仪式」。</p>
+<h3>4.6 回环：这份库到底研究了什么</h3>
+<p>开头说过，ten-proofs 卖的不是十个答案，而是一条流水线。</p>
+<p>把纵轴与横轴交叉后，我的判断是：</p>
+<p>它研究的真正对象，是<strong>后竞赛时代 AI 数学的科学方法</strong>：在模型已经能偶然（或系统地）击穿长期开放问题时，怎样让结果进入数学的信任秩序，而不只是进入新闻秩序。</p>
+<p>Lean 证书是秩序的硬约束；十年选题是难度的代理指标；2000 美元是成本的去神秘化；OpenAI 署名是归因的诚实实验；walkthrough 是可理解性的临时补丁。每一项都有缺陷，但组合在一起，已经比「一篇博客 + 一段看起来很像证明的 LaTeX」更接近一门学科能接受的最低礼貌。</p>
+<p>若只把这个仓库当成「OpenAI 又炫耀了」，会看轻它。若把它当成「可复现的 Astra 训练代码」，又会看错它。它是一份方法学文物：记录 2026 年夏，一家前沿实验室选择用什么仪式，把机器做出的数学送进人类的知识制度。</p>
+<hr>
+<h2>五、信息来源</h2>
+<ol>
+<li>OpenAI 官方博文：https://openai.com/index/ten-advances-in-mathematics/（访问：2026-08-04）</li>
+<li>论文 PDF：https://cdn.openai.com/pdf/ten-proofs-oai.pdf（访问：2026-08-04）</li>
+<li>Reasoning walkthroughs：https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf（访问：2026-08-04）</li>
+<li>GitHub 仓库：https://github.com/openai/ten-proofs（访问：2026-08-04；含 README、lakefile.toml、formalization.yaml、ComparatorChallenges）</li>
+<li>Leiden Declaration：https://leidendeclaration.ai/（访问：2026-08-04）</li>
+<li>Quanta Magazine，<em>Why the Legendary Erdős Problems Are Falling to AI</em>：https://www.quantamagazine.org/why-the-legendary-erdos-problems-are-falling-to-ai-20260803/（2026-08-03）</li>
+<li>Developers Digest 技术解读：https://www.developersdigest.tech/blog/openai-ten-advances-mathematics-lean-2026（访问：2026-08-04）</li>
+<li>BleepingComputer 报道（十年停滞与 Astra 定位）：https://www.bleepingcomputer.com/news/artificial-intelligence/openai-teases-astra-its-next-major-ai-model-after-it-solves-10-long-standing-math-problems/（访问：2026-08-04）</li>
+<li>Aristotle 论文：https://arxiv.org/abs/2510.01346（Harmonic；IMO-level ATP）</li>
+<li>DeepSeek-Prover-V2：https://github.com/deepseek-ai/DeepSeek-Prover-V2 ；论文 https://arxiv.org/html/2504.21801v2</li>
+<li>单位距离评注稿相关：arXiv:2605.20695 <em>Remarks on the disproof of the unit distance conjecture</em></li>
+<li>Lean Comparator：https://github.com/leanprover/comparator（由仓库 README/依赖引用）</li>
+<li>二手综述补充：https://pasqualepillitteri.it/en/news/9274/astra-ten-open-problems-lean-proofs ；https://yfarmx.com/openai-astra-ten-proofs-lean-certificates/</li>
+<li>Cycle Double Cover 相关：OpenAI PDF https://cdn.openai.com/pdf/04d1d1e4-bc75-476a-97cf-49055cd98d31/cdc_proof.pdf ；Scientific American / The Decoder 等报道；外部 Lean 形式化说明 https://j-carmesin.github.io/publications/Cycle_double_cover.pdf</li>
+<li>Leiden / IMA 相关报道：https://ima.org.uk/29314/ai-is-challenging-the-core-values-of-mathematics-researchers-call-for-urgent-action/</li>
+</ol>
+<p>说明：OpenAI 博文页面存在反爬/JS 门槛，正文要点结合官方 PDF、仓库元数据与多家转述交叉核对；涉及 Astra 内部架构、完整评测集与发现阶段人工介入细节，公开信息不足处已在正文标为暂缺，未作脑补。Erdős 数据库状态以发布当日二手观察为准，后续可能更新。</p>
+<hr>
+<h2>六、方法论说明</h2>
+<p>本报告采用数字生命卡兹克提出的横纵分析法：纵轴还原 ten-proofs 从 AI 数学竞赛叙事、单位距离事件到制度化发布的历时过程；横轴在 2026 年 8 月截面上与 AlphaProof、Aristotle、开源 prover、Erdős 社区实践对比；最后在交汇处给出关于「研究发布规范」的判断与情景推演。</p>
+</body>
+</html>
